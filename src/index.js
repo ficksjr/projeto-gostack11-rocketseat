@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/projects', (request, response) => {
   return response.json([
     "project 1",
@@ -9,10 +11,8 @@ app.get('/projects', (request, response) => {
 });
 
 app.post('/projects/', (request, response) => {
-  return response.json([
-    "project 1",
-    "project 2", 
-    "project 3"]);
+const body = request.body
+  return response.json({body});
 });
 
 app.put('/projects/:id', (request, response) => {
